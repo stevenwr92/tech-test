@@ -32,12 +32,12 @@ export class UserRepository {
   async getUser(dto: GetUserDto) {
     try {
       console.log('testing', dto);
-      // const user = await this.prisma.user.findFirst({
-      //   where: { name: dto.name },
-      // });
+      const user = await this.prisma.user.findFirst({
+        where: { name: dto.name },
+      });
 
-      throw new RpcException('testing');
-      // return user;
+      // throw new RpcException('testing');
+      return user;
     } catch (error) {
       console.log(error);
     }
