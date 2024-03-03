@@ -3,11 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { USER_PACKAGE_NAME, USER_SERVICE_NAME } from '@app/common';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { join } from 'path';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     ClientsModule.registerAsync([
       {
         name: USER_SERVICE_NAME,

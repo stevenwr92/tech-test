@@ -14,7 +14,6 @@ export interface GetUserDto {
 }
 
 export interface User {
-  id: string;
   name: string;
   email: string;
   profilePicUrl: string;

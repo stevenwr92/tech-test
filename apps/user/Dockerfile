@@ -30,6 +30,13 @@ RUN npm install -g pnpm
 
 RUN pnpm install --prod
 
+WORKDIR /usr/src/app/user/prisma
+
+RUN npx prisma migrate dev
+
+
+WORKDIR /usr/src/app
+
 COPY --from=development /usr/src/app/dist ./dist
 COPY proto proto
 

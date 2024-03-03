@@ -1,18 +1,22 @@
-import { Controller, Get, Param, Body, Post } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from '@app/common';
-
-@Controller('user')
+import { CreateUserDto, GetUserDto } from '@app/common';
+import { GrpcMethod, Payload, RpcException } from '@nestjs/microservices';
+@Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  createUser(@Body() dto: CreateUserDto) {
+  @GrpcMethod('UserService', 'createUser')
+  createUser(@Payload() dto: CreateUserDto) {
     return this.userService.createUser(dto);
   }
 
-  @Get(':name')
-  getUser(@Param('name') name: string) {
-    return this.userService.getUser(name);
+  @GrpcMethod('UserService', 'getUser')
+  async getUser(@Payload() dto: GetUserDto) {
+    try {
+      return this.userService.getUser(dto);
+    } catch (error) {
+      throw new RpcException(error);
+    }
   }
 }

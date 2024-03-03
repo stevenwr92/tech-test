@@ -18,6 +18,6 @@ async function bootstrap() {
     },
   });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  await app.listen(configService.get('HTTP_PORT'));
+  await app.startAllMicroservices();
 }
 bootstrap();
