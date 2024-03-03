@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "82e4adba-784c-402f-a7a8-ce245705d129",
+		"name": "GRPC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"id": "6fac5f9b-fe10-4af5-a7d0-ef975a3b8754",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Budi\",\n    \"email\": \"budi@mail.com\",\n    \"profilePicUrl\": \"www.budi.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/user"
+			},
+			"response": []
+		},
+		{
+			"name": "Get One User",
+			"id": "86215442-8092-416e-a9be-ea960dd65fdd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Budi\",\n    \"email\": \"budi@mail.com\",\n    \"profilePicUrl\": \"www.lawak.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/user/Budi"
+			},
+			"response": []
+		}
+	]
+}
